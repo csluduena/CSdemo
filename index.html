@@ -3,49 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capitan Salto - Casa de Festejos</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <title>Capitán Salto - Casa de Festejos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap');
+        
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            color: #333;
             margin: 0;
             padding: 0;
+            background: linear-gradient(
+                45deg,
+                rgba(255, 200, 200, 0.3),
+                rgba(255, 255, 200, 0.3),
+                rgba(200, 255, 200, 0.3),
+                rgba(200, 255, 255, 0.3),
+                rgba(200, 200, 255, 0.3)
+            );
+            min-height: 100vh;
         }
 
         header {
-            background: linear-gradient(45deg, #ff6347, #ff8c00);
-            padding: 20px;
+            background-color: #ff6347;
+            padding: 15px;
             text-align: center;
             color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         h1 {
-            font-size: 36px;
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 48px;
             margin: 0;
-            animation: rainbow 5s infinite;
+            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 5s ease infinite;
         }
 
         @keyframes rainbow {
-            0% { color: #ff0000; }
-            20% { color: #ffff00; }
-            40% { color: #00ff00; }
-            60% { color: #00ffff; }
-            80% { color: #ff00ff; }
-            100% { color: #ff0000; }
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
         }
 
         .container {
             margin: 20px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            padding: 20px;
         }
 
         .btn {
-            background: linear-gradient(45deg, #ff6347, #ff8c00);
+            background-color: #ff6347;
             color: white;
             padding: 12px 24px;
             border: none;
@@ -53,31 +61,35 @@
             cursor: pointer;
             margin: 10px;
             font-size: 16px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #e55347;
+            transform: scale(1.05);
         }
 
         .card {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             padding: 25px;
-            transition: transform 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: #ff6347;
+        .slogan {
             font-size: 24px;
-            margin-bottom: 20px;
+            color: #ff6347;
+            text-align: center;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .slogan:hover {
+            color: #ff8367;
         }
 
         .calendar {
@@ -88,15 +100,16 @@
         }
 
         .calendar-item {
+            background-color: #f0f8ff;
             padding: 15px;
             border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .calendar-item:hover {
-            transform: scale(1.02);
+            transform: translateY(-5px);
         }
 
         .calendar-item.past {
@@ -118,128 +131,84 @@
             border: 2px solid #ff6347;
             width: 250px;
             font-size: 16px;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s;
         }
 
         input[type="text"]:focus {
             outline: none;
-            border-color: #ff8c00;
-            box-shadow: 0 0 5px rgba(255, 99, 71, 0.3);
+            border-color: #e55347;
+            box-shadow: 0 0 5px rgba(255,99,71,0.3);
         }
 
         .client-details {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
 
-        .payment {
+        #reservation-details {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
             margin-top: 20px;
-            font-size: 18px;
+            border: 2px solid #ff6347;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .reservation-info {
+            margin: 10px 0;
             padding: 15px;
             background-color: #f8f9fa;
-            border-radius: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .slogan {
-            font-size: 2rem;
-            text-align: center;
-            margin: 2rem 0;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradientMove 3s ease infinite;
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .section-explanation {
-            position: fixed;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
+        .payment-info {
+            margin-top: 15px;
             padding: 15px;
-            border-radius: 10px;
-            max-width: 300px;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .section-arrow {
-            position: absolute;
-            left: -30px;
-            top: 50%;
-            width: 30px;
-            height: 2px;
-            background: white;
-        }
-
-        .section-arrow:before {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: -4px;
-            width: 10px;
-            height: 10px;
-            border-top: 2px solid white;
-            border-right: 2px solid white;
-            transform: rotate(45deg);
-        }
-
-        .typewriter {
-            overflow: hidden;
-            border-right: .15em solid orange;
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: .15em;
-            animation: 
-                typing 3.5s steps(40, end),
-                blink-caret .75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: orange; }
+            background-color: #fff3e6;
+            border-radius: 8px;
+            border-left: 4px solid #ff6347;
         }
 
         #countdown {
             font-size: 24px;
+            color: #ff6347;
             text-align: center;
             margin: 20px 0;
             padding: 15px;
-            background: linear-gradient(45deg, #ff6347, #ff8c00);
-            color: white;
+            background-color: rgba(255,255,255,0.8);
             border-radius: 10px;
-            animation: pulse 2s infinite;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f0f;
+            animation: confetti-fall 3s linear forwards;
+            z-index: 1000;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1 class="animate__animated animate__bounce">Capitan Salto - Casa de Festejos</h1>
+    <h1 class="animate__animated animate__bounce">Capitán Salto</h1>
 </header>
 
 <div class="container">
@@ -250,13 +219,28 @@
     <!-- Visual Cliente -->
     <div id="cliente" class="card">
         <h2 class="animate__animated animate__fadeIn">¡Bienvenidos a Capitán Salto!</h2>
-        <div class="slogan typewriter">
+        <div class="slogan">
             ¡Donde la diversión no tiene límites! Registra tu aventura con nosotros
         </div>
         <div id="countdown"></div>
         <div class="client-details">
             <input type="text" id="codigoReserva" placeholder="INGRESE A0000">
             <button class="btn" onclick="consultarReserva()">Consultar</button>
+            
+            <div id="reservation-details">
+                <div class="reservation-info">
+                    <h3>Detalles de la Reserva</h3>
+                    <p><strong>Cliente:</strong> Ana Gómez</p>
+                    <p><strong>Evento:</strong> Cumpleaños 30 años</p>
+                    <p><strong>Fecha del Evento:</strong> 25 de Diciembre, 2024</p>
+                </div>
+                <div class="payment-info">
+                    <h4>Información de Pago</h4>
+                    <p><strong>Seña pagada:</strong> $8,000 (3 de Diciembre, 2024)</p>
+                    <p><strong>Saldo pendiente:</strong> $30,000</p>
+                    <p><strong>Fecha límite de pago:</strong> 1 de Febrero, 2025</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -274,57 +258,23 @@
     <div id="admin" class="card" style="display:none;">
         <h3>Panel de Administración - Reservas</h3>
         <div class="calendar">
-            <!-- Enero -->
             <div class="calendar-item future">
-                <p><strong>15 de Enero, 2024</strong></p>
-                <p>Evento: Cumpleaños 18 años</p>
-                <p>Cliente: María González</p>
-            </div>
-            <div class="calendar-item future">
-                <p><strong>20 de Enero, 2024</strong></p>
-                <p>Evento: Boda de Plata</p>
-                <p>Cliente: Roberto y Ana</p>
-            </div>
-            
-            <!-- Febrero -->
-            <div class="calendar-item future">
-                <p><strong>5 de Febrero, 2024</strong></p>
-                <p>Evento: Fiesta Empresarial</p>
-                <p>Cliente: Tech Solutions SA</p>
-            </div>
-            
-            <!-- Continúa con más eventos hasta Agosto -->
-            <div class="calendar-item future">
-                <p><strong>15 de Agosto, 2024</strong></p>
-                <p>Evento: Graduación</p>
-                <p>Cliente: Universidad XYZ</p>
-            </div>
-            <div class="calendar-item cancelled">
-                <p><strong>20 de Agosto, 2024</strong></p>
-                <p>Evento: Boda</p>
-                <p>Cliente: Carlos y María</p>
+                <p><strong>Reserva Confirmada</strong></p>
+                <p>Evento: Cumpleaños de María</p>
+                <p>Fecha: 15 de Enero, 2024</p>
             </div>
             <div class="calendar-item future">
-                <p><strong>30 de Agosto, 2024</strong></p>
-                <p>Evento: Aniversario</p>
-                <p>Cliente: Empresa ABC</p>
+                <p><strong>Reserva Confirmada</strong></p>
+                <p>Evento: Fiesta de 15</p>
+                <p>Fecha: 30 de Enero, 2024</p>
             </div>
+            <div class="calendar-item future">
+                <p><strong>Reserva Confirmada</strong></p>
+                <p>Evento: Bautismo</p>
+                <p>Fecha: 15 de Febrero, 2024</p>
+            </div>
+            <!-- Más eventos aquí... -->
         </div>
-    </div>
-
-    <div id="clienteExplanation" class="section-explanation">
-        <div class="section-arrow"></div>
-        <p class="typewriter"><strong>Sección Cliente:</strong> Aquí podrás consultar tu reserva y ver el tiempo restante para tu evento.</p>
-    </div>
-
-    <div id="adminExplanation" class="section-explanation">
-        <div class="section-arrow"></div>
-        <p class="typewriter"><strong>Panel Administrativo:</strong> Gestión completa de reservas y eventos programados.</p>
-    </div>
-
-    <div id="empleadoExplanation" class="section-explanation">
-        <div class="section-arrow"></div>
-        <p class="typewriter"><strong>Sección Empleado:</strong> Registro y gestión de nuevas reservas.</p>
     </div>
 </div>
 
@@ -348,20 +298,37 @@
     }
 
     function confirmarReserva() {
-        alert("¡Reserva confirmada e impresa!");
+        alert("Reserva confirmada e imprimida!");
+    }
+
+    function createConfetti() {
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 3000);
+        }
     }
 
     function consultarReserva() {
-        var codigo = document.getElementById('codigoReserva').value;
-        if (codigo) {
-            document.getElementById('cliente-details').style.display = 'block';
+        var codigo = document.getElementById('codigoReserva').value.toUpperCase();
+        var reservationDetails = document.getElementById('reservation-details');
+        
+        if (codigo === 'A0000') {
+            reservationDetails.style.display = 'block';
+            createConfetti();
         } else {
-            alert("Por favor, ingrese un código de reserva válido.");
+            reservationDetails.style.display = 'none';
+            alert("Código de reserva no encontrado. Por favor, intente con A0000");
         }
     }
 
     function updateCountdown() {
-        const eventDate = new Date('2024-01-15T00:00:00');
+        const eventDate = new Date('2024-12-25T00:00:00');
         const now = new Date();
         const difference = eventDate - now;
 
@@ -370,90 +337,23 @@
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-        document.getElementById('countdown').innerHTML = 
-            `Próximo evento en: ${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
-    }
-
-    function createConfetti() {
-        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'];
-        for (let i = 0; i < 50; i++) {
-            const confetti = document.createElement('div');
-            confetti.style.position = 'fixed';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.top = -20 + 'px';
-            confetti.style.width = '10px';
-            confetti.style.height = '10px';
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.borderRadius = '50%';
-            confetti.style.zIndex = '1000';
-            document.body.appendChild(confetti);
-
-            const animation = confetti.animate([
-                { transform: 'translateY(0) rotate(0)', opacity: 1 },
-                { transform: `translateY(100vh) rotate(${360 * Math.random()}deg)`, opacity: 0 }
-            ], {
-                duration: 2000 + Math.random() * 3000,
-                easing: 'cubic-bezier(.37,0,.63,1)'
-            });
-
-            animation.onfinish = () => confetti.remove();
-        }
+        document.getElementById('countdown').innerHTML = `
+            Próximo evento en: ${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos
+        `;
     }
 
     // Initialize
     window.onload = function() {
         showCliente();
-        createConfetti();
         updateCountdown();
         setInterval(updateCountdown, 1000);
-        initializeExplanations();
-    };
-
-    function initializeExplanations() {
-        const explanations = {
-            'cliente': document.getElementById('clienteExplanation'),
-            'admin': document.getElementById('adminExplanation'),
-            'empleado': document.getElementById('empleadoExplanation')
-        };
-
-        function updateExplanations() {
-            const currentSection = document.querySelector('[style*="display: block"]');
-            if (!currentSection) return;
-
-            const sectionId = currentSection.id;
-            const explanation = explanations[sectionId];
-            
-            if (explanation) {
-                explanation.style.opacity = '1';
-                explanation.style.top = `${currentSection.offsetTop + 50}px`;
+        
+        document.getElementById('codigoReserva').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                consultarReserva();
             }
-
-            Object.values(explanations).forEach(exp => {
-                if (exp !== explanation) {
-                    exp.style.opacity = '0';
-                }
-            });
-        }
-
-        ['showCliente', 'showAdmin', 'showEmpleado'].forEach(funcName => {
-            const originalFunc = window[funcName];
-            window[funcName] = function() {
-                originalFunc();
-                setTimeout(updateExplanations, 100);
-            };
         });
-
-        setTimeout(updateExplanations, 100);
-    }
-
-    document.querySelector('.slogan').addEventListener('mouseover', function() {
-        this.style.transform = 'scale(1.05)';
-        createConfetti();
-    });
-
-    document.querySelector('.slogan').addEventListener('mouseout', function() {
-        this.style.transform = 'scale(1)';
-    });
+    };
 </script>
 
 </body>
