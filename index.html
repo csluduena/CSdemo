@@ -6,380 +6,455 @@
     <title>Capitan Salto - Casa de Festejos</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
-
-        :root {
-            --primary-color: #ff6347;
-            --secondary-color: #4CAF50;
-            --accent-color: #FFC107;
-            --dark-color: #2C3E50;
-            --light-color: #ECF0F1;
-        }
-
         body {
-            font-family: 'Fredoka', Arial, sans-serif;
-            background: linear-gradient(135deg, #f0f8ff 0%, #e6e9f0 100%);
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
             color: #333;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
         }
 
-        .navbar {
-            background: linear-gradient(45deg, var(--primary-color), #ff8c7a);
-            padding: 1rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: white;
+        header {
+            background: linear-gradient(45deg, #ff6347, #ff8c00);
+            padding: 20px;
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .rainbow-text {
-            background: linear-gradient(45deg, 
-                #ff0000, #ff7f00, #ffff00, #00ff00, 
-                #0000ff, #4b0082, #8b00ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: rainbow 5s linear infinite;
+        h1 {
+            font-size: 36px;
+            margin: 0;
+            animation: rainbow 5s infinite;
         }
 
         @keyframes rainbow {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+            0% { color: #ff0000; }
+            20% { color: #ffff00; }
+            40% { color: #00ff00; }
+            60% { color: #00ffff; }
+            80% { color: #ff00ff; }
+            100% { color: #ff0000; }
         }
 
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1rem;
-            background-color: rgba(255,255,255,0.1);
+        .container {
+            margin: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn {
-            background: var(--primary-color);
+            background: linear-gradient(45deg, #ff6347, #ff8c00);
             color: white;
             padding: 12px 24px;
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-transform: uppercase;
+            margin: 10px;
+            font-size: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            padding: 2rem;
-            transition: transform 0.3s;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 25px;
+            transition: transform 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
         }
 
-        /* Cliente Section */
-        #cliente {
-            display: block;
-            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-        }
-
-        .countdown {
-            text-align: center;
-            margin: 2rem 0;
-            padding: 2rem;
-            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
-            border-radius: 15px;
-            color: white;
-            font-size: 1.5rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
-
-        .countdown span {
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 0 0.5rem;
-        }
-
-        .reservation-form {
-            max-width: 500px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            margin: 1rem 0;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus {
-            border-color: var(--primary-color);
-            outline: none;
-        }
-
-        /* Admin Section */
-        #admin {
-            display: none;
-            background: var(--light-color);
+        .card h3 {
+            color: #ff6347;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         .calendar {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
         }
 
         .calendar-item {
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .calendar-item.past { background-color: #ffcdd2; }
-        .calendar-item.future { background-color: #c8e6c9; }
-        .calendar-item.cancelled { background-color: #ffccbc; }
-
-        /* Empleado Section */
-        #empleado {
-            display: none;
-            background: #fff;
+        .calendar-item:hover {
+            transform: scale(1.02);
         }
 
-        .empleado-form {
-            max-width: 600px;
-            margin: 0 auto;
+        .calendar-item.past {
+            background-color: #ffcccb;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .calendar-item.future {
+            background-color: #b0e57c;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-            font-weight: 600;
+        .calendar-item.cancelled {
+            background-color: #ffb3b3;
         }
 
-        /* Confetti Animation */
-        @keyframes confetti {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
+        input[type="text"] {
+            padding: 12px;
+            margin-right: 10px;
+            border-radius: 25px;
+            border: 2px solid #ff6347;
+            width: 250px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
         }
 
-        .confetti {
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #ff8c00;
+            box-shadow: 0 0 5px rgba(255, 99, 71, 0.3);
+        }
+
+        .client-details {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .payment {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .slogan {
+            font-size: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .section-explanation {
             position: fixed;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 300px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .section-arrow {
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            width: 30px;
+            height: 2px;
+            background: white;
+        }
+
+        .section-arrow:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -4px;
             width: 10px;
             height: 10px;
-            background-color: var(--accent-color);
-            animation: confetti 4s ease-in-out infinite;
+            border-top: 2px solid white;
+            border-right: 2px solid white;
+            transform: rotate(45deg);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-buttons {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                margin: 0.5rem 0;
-            }
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
 
-            .calendar {
-                grid-template-columns: 1fr;
-            }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+
+        #countdown {
+            font-size: 24px;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff6347, #ff8c00);
+            color: white;
+            border-radius: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <h1 class="rainbow-text animate__animated animate__bounce">Capitán Salto</h1>
-        <div class="nav-buttons">
-            <button class="btn" onclick="showCliente()">Visual Cliente</button>
-            <button class="btn" onclick="showEmpleado()">Visual Empleado</button>
-            <button class="btn" onclick="showAdmin()">Panel Administrador</button>
-        </div>
-    </nav>
 
-    <div class="container">
-        <!-- Visual Cliente -->
-        <div id="cliente" class="card">
-            <h2 class="animate__animated animate__fadeIn">¡Bienvenidos a Capitán Salto!</h2>
-            <div class="countdown" id="countdown">
-                <h3>Tiempo hasta tu próximo evento:</h3>
-                <div id="countdown-timer"></div>
+<header>
+    <h1 class="animate__animated animate__bounce">Capitan Salto - Casa de Festejos</h1>
+</header>
+
+<div class="container">
+    <button class="btn" onclick="showEmpleado()">Visual Empleado</button>
+    <button class="btn" onclick="showAdmin()">Panel Administrador</button>
+    <button class="btn" onclick="showCliente()">Visual Cliente</button>
+    
+    <!-- Visual Cliente -->
+    <div id="cliente" class="card">
+        <h2 class="animate__animated animate__fadeIn">¡Bienvenidos a Capitán Salto!</h2>
+        <div class="slogan typewriter">
+            ¡Donde la diversión no tiene límites! Registra tu aventura con nosotros
+        </div>
+        <div id="countdown"></div>
+        <div class="client-details">
+            <input type="text" id="codigoReserva" placeholder="INGRESE A0000">
+            <button class="btn" onclick="consultarReserva()">Consultar</button>
+        </div>
+    </div>
+
+    <!-- Visual Empleado -->
+    <div id="empleado" class="card" style="display:none;">
+        <h3>Plantilla de Reserva - Empleado</h3>
+        <p><strong>Cliente:</strong> Juan Pérez</p>
+        <p><strong>Evento:</strong> Cumpleaños 15 años</p>
+        <p><strong>Fecha:</strong> 10 de Enero, 2024</p>
+        <p><strong>Seña:</strong> $8,000</p>
+        <button class="btn" onclick="confirmarReserva()">Confirmar e Imprimir</button>
+    </div>
+
+    <!-- Panel Admin -->
+    <div id="admin" class="card" style="display:none;">
+        <h3>Panel de Administración - Reservas</h3>
+        <div class="calendar">
+            <!-- Enero -->
+            <div class="calendar-item future">
+                <p><strong>15 de Enero, 2024</strong></p>
+                <p>Evento: Cumpleaños 18 años</p>
+                <p>Cliente: María González</p>
+            </div>
+            <div class="calendar-item future">
+                <p><strong>20 de Enero, 2024</strong></p>
+                <p>Evento: Boda de Plata</p>
+                <p>Cliente: Roberto y Ana</p>
             </div>
             
-            <div class="reservation-form">
-                <h3>Consulta tu Reserva</h3>
-                <input type="text" id="codigoReserva" placeholder="INGRESE A0000" 
-                       title="Ingrese su código de reserva en formato A0000">
-                <button class="btn" onclick="consultarReserva()">Consultar</button>
-
-                <div id="cliente-details" style="display:none;">
-                    <h4>Detalles de la Reserva</h4>
-                    <p><strong>Cliente:</strong> Ana Gómez</p>
-                    <p><strong>Evento:</strong> Cumpleaños 30 años</p>
-                    <p><strong>Fecha del Evento:</strong> 25 de Diciembre, 2024</p>
-                    <div class="payment">
-                        <p><strong>Seña:</strong> $8,000 (Pagado: 3/12/2024)</p>
-                        <p><strong>Pendiente:</strong> $30,000 (Vence: 1/2/2025)</p>
-                    </div>
-                </div>
+            <!-- Febrero -->
+            <div class="calendar-item future">
+                <p><strong>5 de Febrero, 2024</strong></p>
+                <p>Evento: Fiesta Empresarial</p>
+                <p>Cliente: Tech Solutions SA</p>
             </div>
-        </div>
-
-        <!-- Panel Admin -->
-        <div id="admin" class="card">
-            <h2>Panel de Administración</h2>
-            <div class="calendar">
-                <div class="calendar-item past">
-                    <h4>Reserva Vencida</h4>
-                    <p>Evento: Cumpleaños de Luis</p>
-                    <p>Fecha: 5/12/2024</p>
-                </div>
-                <div class="calendar-item future">
-                    <h4>Próxima Reserva</h4>
-                    <p>Evento: Fiesta Infantil</p>
-                    <p>Fecha: 10/12/2024</p>
-                </div>
-                <div class="calendar-item cancelled">
-                    <h4>Cancelada</h4>
-                    <p>Evento: Casamiento</p>
-                    <p>Fecha: 8/12/2024</p>
-                </div>
+            
+            <!-- Continúa con más eventos hasta Agosto -->
+            <div class="calendar-item future">
+                <p><strong>15 de Agosto, 2024</strong></p>
+                <p>Evento: Graduación</p>
+                <p>Cliente: Universidad XYZ</p>
             </div>
-        </div>
-
-        <!-- Visual Empleado -->
-        <div id="empleado" class="card">
-            <h2>Plantilla de Reserva</h2>
-            <div class="empleado-form">
-                <div class="form-group">
-                    <label>Cliente:</label>
-                    <input type="text" id="nombreCliente" placeholder="Nombre completo">
-                </div>
-                <div class="form-group">
-                    <label>Tipo de Evento:</label>
-                    <input type="text" id="tipoEvento" placeholder="Ej: Cumpleaños, Casamiento">
-                </div>
-                <div class="form-group">
-                    <label>Fecha:</label>
-                    <input type="text" id="fechaEvento" placeholder="DD/MM/YYYY">
-                </div>
-                <div class="form-group">
-                    <label>Seña:</label>
-                    <input type="text" id="senaEvento" placeholder="Monto en $">
-                </div>
-                <button class="btn" onclick="confirmarReserva()">Confirmar e Imprimir</button>
+            <div class="calendar-item cancelled">
+                <p><strong>20 de Agosto, 2024</strong></p>
+                <p>Evento: Boda</p>
+                <p>Cliente: Carlos y María</p>
+            </div>
+            <div class="calendar-item future">
+                <p><strong>30 de Agosto, 2024</strong></p>
+                <p>Evento: Aniversario</p>
+                <p>Cliente: Empresa ABC</p>
             </div>
         </div>
     </div>
 
-    <script>
-        // Show Visual Cliente by default
-        window.onload = function() {
-            showCliente();
-            createConfetti();
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+    <div id="clienteExplanation" class="section-explanation">
+        <div class="section-arrow"></div>
+        <p class="typewriter"><strong>Sección Cliente:</strong> Aquí podrás consultar tu reserva y ver el tiempo restante para tu evento.</p>
+    </div>
+
+    <div id="adminExplanation" class="section-explanation">
+        <div class="section-arrow"></div>
+        <p class="typewriter"><strong>Panel Administrativo:</strong> Gestión completa de reservas y eventos programados.</p>
+    </div>
+
+    <div id="empleadoExplanation" class="section-explanation">
+        <div class="section-arrow"></div>
+        <p class="typewriter"><strong>Sección Empleado:</strong> Registro y gestión de nuevas reservas.</p>
+    </div>
+</div>
+
+<script>
+    function showEmpleado() {
+        document.getElementById('empleado').style.display = 'block';
+        document.getElementById('admin').style.display = 'none';
+        document.getElementById('cliente').style.display = 'none';
+    }
+
+    function showAdmin() {
+        document.getElementById('empleado').style.display = 'none';
+        document.getElementById('admin').style.display = 'block';
+        document.getElementById('cliente').style.display = 'none';
+    }
+
+    function showCliente() {
+        document.getElementById('empleado').style.display = 'none';
+        document.getElementById('admin').style.display = 'none';
+        document.getElementById('cliente').style.display = 'block';
+    }
+
+    function confirmarReserva() {
+        alert("¡Reserva confirmada e impresa!");
+    }
+
+    function consultarReserva() {
+        var codigo = document.getElementById('codigoReserva').value;
+        if (codigo) {
+            document.getElementById('cliente-details').style.display = 'block';
+        } else {
+            alert("Por favor, ingrese un código de reserva válido.");
+        }
+    }
+
+    function updateCountdown() {
+        const eventDate = new Date('2024-01-15T00:00:00');
+        const now = new Date();
+        const difference = eventDate - now;
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown').innerHTML = 
+            `Próximo evento en: ${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+    }
+
+    function createConfetti() {
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'];
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = -20 + 'px';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.borderRadius = '50%';
+            confetti.style.zIndex = '1000';
+            document.body.appendChild(confetti);
+
+            const animation = confetti.animate([
+                { transform: 'translateY(0) rotate(0)', opacity: 1 },
+                { transform: `translateY(100vh) rotate(${360 * Math.random()}deg)`, opacity: 0 }
+            ], {
+                duration: 2000 + Math.random() * 3000,
+                easing: 'cubic-bezier(.37,0,.63,1)'
+            });
+
+            animation.onfinish = () => confetti.remove();
+        }
+    }
+
+    // Initialize
+    window.onload = function() {
+        showCliente();
+        createConfetti();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        initializeExplanations();
+    };
+
+    function initializeExplanations() {
+        const explanations = {
+            'cliente': document.getElementById('clienteExplanation'),
+            'admin': document.getElementById('adminExplanation'),
+            'empleado': document.getElementById('empleadoExplanation')
         };
 
-        function showEmpleado() {
-            document.getElementById('empleado').style.display = 'block';
-            document.getElementById('admin').style.display = 'none';
-            document.getElementById('cliente').style.display = 'none';
-        }
+        function updateExplanations() {
+            const currentSection = document.querySelector('[style*="display: block"]');
+            if (!currentSection) return;
 
-        function showAdmin() {
-            document.getElementById('empleado').style.display = 'none';
-            document.getElementById('admin').style.display = 'block';
-            document.getElementById('cliente').style.display = 'none';
-        }
-
-        function showCliente() {
-            document.getElementById('empleado').style.display = 'none';
-            document.getElementById('admin').style.display = 'none';
-            document.getElementById('cliente').style.display = 'block';
-        }
-
-        function confirmarReserva() {
-            alert("¡Reserva confirmada! Imprimiendo comprobante...");
-        }
-
-        function consultarReserva() {
-            var codigo = document.getElementById('codigoReserva').value;
-            if (codigo) {
-                document.getElementById('cliente-details').style.display = 'block';
-                createConfetti();
-            } else {
-                alert("Por favor, ingrese un código de reserva válido (Formato: A0000)");
+            const sectionId = currentSection.id;
+            const explanation = explanations[sectionId];
+            
+            if (explanation) {
+                explanation.style.opacity = '1';
+                explanation.style.top = `${currentSection.offsetTop + 50}px`;
             }
+
+            Object.values(explanations).forEach(exp => {
+                if (exp !== explanation) {
+                    exp.style.opacity = '0';
+                }
+            });
         }
 
-        function createConfetti() {
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.animationDelay = Math.random() * 3 + 's';
-                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 4000);
-            }
-        }
+        ['showCliente', 'showAdmin', 'showEmpleado'].forEach(funcName => {
+            const originalFunc = window[funcName];
+            window[funcName] = function() {
+                originalFunc();
+                setTimeout(updateExplanations, 100);
+            };
+        });
 
-        function updateCountdown() {
-            const eventDate = new Date('2024-12-25T00:00:00');
-            const now = new Date();
-            const diff = eventDate - now;
+        setTimeout(updateExplanations, 100);
+    }
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    document.querySelector('.slogan').addEventListener('mouseover', function() {
+        this.style.transform = 'scale(1.05)';
+        createConfetti();
+    });
 
-            document.getElementById('countdown-timer').innerHTML = `
-                <span>${days}</span> días 
-                <span>${hours}</span> horas 
-                <span>${minutes}</span> minutos 
-                <span>${seconds}</span> segundos
-            `;
-        }
-    </script>
+    document.querySelector('.slogan').addEventListener('mouseout', function() {
+        this.style.transform = 'scale(1)';
+    });
+</script>
+
 </body>
 </html>
