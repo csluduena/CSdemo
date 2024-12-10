@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitan Salto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Capitan Salto - Consulta tu reserva</h1>
+    </header>
+    
+    <section class="cliente">
+        <h2>Consultar Reserva</h2>
+        <p>Ingresa el código de acceso proporcionado al realizar tu reserva:</p>
+        <input type="text" placeholder="Código de acceso" id="codigoReserva">
+        <button onclick="consultarReserva()">Consultar</button>
+        <div id="resultadoReserva" class="resultado">
+            <!-- Aquí se mostrarían los detalles de la reserva -->
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Capitan Salto. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function consultarReserva() {
+            const codigo = document.getElementById('codigoReserva').value;
+            if (codigo) {
+                document.getElementById('resultadoReserva').innerHTML = `<p>Reserva encontrada: <strong>Código: ${codigo}</strong></p>`;
+            } else {
+                alert('Por favor ingresa un código de reserva.');
+            }
+        }
+    </script>
+</body>
+</html>

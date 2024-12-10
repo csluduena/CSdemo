@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitan Salto - Empleado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Capitan Salto - Registro de Reservas</h1>
+    </header>
+
+    <section class="empleado">
+        <h2>Generar Nueva Reserva</h2>
+        <form id="formReserva">
+            <label for="nombre">Nombre del Cliente:</label>
+            <input type="text" id="nombre" required>
+            
+            <label for="evento">Tipo de Evento:</label>
+            <input type="text" id="evento" required>
+
+            <label for="monto">Monto de la Seña:</label>
+            <input type="number" id="monto" required>
+            
+            <button type="submit">Generar Reserva</button>
+        </form>
+
+        <div id="resultadoGeneracion">
+            <!-- Aquí aparecerá el código de reserva generado -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Capitan Salto. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('formReserva').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const evento = document.getElementById('evento').value;
+            const monto = document.getElementById('monto').value;
+
+            const codigoReserva = 'A' + Math.floor(Math.random() * 10000); // Simula la generación de un código único
+
+            document.getElementById('resultadoGeneracion').innerHTML = `<p>Reserva generada: <strong>${codigoReserva}</strong><br>Cliente: ${nombre} <br>Evento: ${evento} <br>Seña: $${monto}</p>`;
+        });
+    </script>
+</body>
+</html>
