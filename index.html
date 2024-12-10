@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap');
-        
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(
-                45deg,
-                rgba(255, 200, 200, 0.3),
-                rgba(255, 255, 200, 0.3),
-                rgba(200, 255, 200, 0.3),
-                rgba(200, 255, 255, 0.3),
-                rgba(200, 200, 255, 0.3)
-            );
+            background: linear-gradient(45deg,
+                    rgba(255, 200, 200, 0.3),
+                    rgba(255, 255, 200, 0.3),
+                    rgba(200, 255, 200, 0.3),
+                    rgba(200, 255, 255, 0.3),
+                    rgba(200, 200, 255, 0.3));
             min-height: 100vh;
         }
 
@@ -28,23 +27,28 @@
             padding: 15px;
             text-align: center;
             color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
             font-family: 'Comic Sans MS', cursive;
             font-size: 48px;
             margin: 0;
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
-            -webkit-background-clip: text;
+            background-color: #af6486;
             background-clip: text;
-            color: transparent;
-            animation: rainbow 5s ease infinite;
+            color: #00000000;
+            text-shadow: 4px 3px 0px #eefff6;
+            /* animation: rainbow 100s ease infinite; */
         }
 
         @keyframes rainbow {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(360deg);
+            }
         }
 
         .container {
@@ -62,7 +66,7 @@
             margin: 10px;
             font-size: 16px;
             transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .btn:hover {
@@ -79,15 +83,15 @@
         }
 
         .slogan {
-            font-size: 24px;
-            color: #ff6347;
-            text-align: center;
-            margin: 20px 0;
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
+    font-size: 24px;
+    color: #751111e3;
+    text-align: center;
+    margin: 20px 0;
+    /* animation: bounce 2s infinite; */
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-top: 3rem;
+}
         .slogan:hover {
             color: #ff8367;
         }
@@ -105,7 +109,7 @@
             border-radius: 10px;
             text-align: center;
             transition: transform 0.2s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .calendar-item:hover {
@@ -137,7 +141,7 @@
         input[type="text"]:focus {
             outline: none;
             border-color: #e55347;
-            box-shadow: 0 0 5px rgba(255,99,71,0.3);
+            box-shadow: 0 0 5px rgba(255, 99, 71, 0.3);
         }
 
         .client-details {
@@ -163,7 +167,7 @@
             padding: 15px;
             background-color: #f8f9fa;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
         .payment-info {
@@ -180,14 +184,21 @@
             text-align: center;
             margin: 20px 0;
             padding: 15px;
-            background-color: rgba(255,255,255,0.8);
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .confetti {
@@ -200,161 +211,168 @@
         }
 
         @keyframes confetti-fall {
-            0% { transform: translateY(-100vh) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1 class="animate__animated animate__bounce">Capitán Salto</h1>
-</header>
+    <header>
+        <h1 class="animate__animated animate__bounce">Capitán Salto</h1>
+    </header>
 
-<div class="container">
-    <button class="btn" onclick="showEmpleado()">Visual Empleado</button>
-    <button class="btn" onclick="showAdmin()">Panel Administrador</button>
-    <button class="btn" onclick="showCliente()">Visual Cliente</button>
-    
-    <!-- Visual Cliente -->
-    <div id="cliente" class="card">
-        <h2 class="animate__animated animate__fadeIn">¡Bienvenidos a Capitán Salto!</h2>
-        <div class="slogan">
-            ¡Donde la diversión no tiene límites! Registra tu aventura con nosotros
-        </div>
-        <div id="countdown"></div>
-        <div class="client-details">
-            <input type="text" id="codigoReserva" placeholder="INGRESE A0000">
-            <button class="btn" onclick="consultarReserva()">Consultar</button>
-            
-            <div id="reservation-details">
-                <div class="reservation-info">
-                    <h3>Detalles de la Reserva</h3>
-                    <p><strong>Cliente:</strong> Ana Gómez</p>
-                    <p><strong>Evento:</strong> Cumpleaños 30 años</p>
-                    <p><strong>Fecha del Evento:</strong> 25 de Diciembre, 2024</p>
+    <div class="container">
+        <button class="btn" onclick="showEmpleado()">Visual Empleado</button>
+        <button class="btn" onclick="showAdmin()">Panel Administrador</button>
+        <button class="btn" onclick="showCliente()">Visual Cliente</button>
+
+        <!-- Visual Cliente -->
+        <div id="cliente" class="card">
+            <h2 class="animate__animated animate__fadeIn">¡Bienvenidos a Capitán Salto!</h2>
+            <div class="slogan">
+                ¡Donde la diversión no tiene límites! Registra tu aventura con nosotros
+            </div>
+            <div id="countdown"></div>
+            <div class="client-details">
+                <input type="text" id="codigoReserva" placeholder="INGRESE A0000">
+                <button class="btn" onclick="consultarReserva()">Consultar</button>
+
+                <div id="reservation-details">
+                    <div class="reservation-info">
+                        <h3>Detalles de la Reserva</h3>
+                        <p><strong>Cliente:</strong> Ana Gómez</p>
+                        <p><strong>Evento:</strong> Cumpleaños 30 años</p>
+                        <p><strong>Fecha del Evento:</strong> 25 de Diciembre, 2024</p>
+                    </div>
+                    <div class="payment-info">
+                        <h4>Información de Pago</h4>
+                        <p><strong>Seña pagada:</strong> $8,000 (3 de Diciembre, 2024)</p>
+                        <p><strong>Saldo pendiente:</strong> $30,000</p>
+                        <p><strong>Fecha límite de pago:</strong> 1 de Febrero, 2025</p>
+                    </div>
                 </div>
-                <div class="payment-info">
-                    <h4>Información de Pago</h4>
-                    <p><strong>Seña pagada:</strong> $8,000 (3 de Diciembre, 2024)</p>
-                    <p><strong>Saldo pendiente:</strong> $30,000</p>
-                    <p><strong>Fecha límite de pago:</strong> 1 de Febrero, 2025</p>
+            </div>
+        </div>
+
+        <!-- Visual Empleado -->
+        <div id="empleado" class="card" style="display:none;">
+            <h3>Plantilla de Reserva - Empleado</h3>
+            <p><strong>Cliente:</strong> Juan Pérez</p>
+            <p><strong>Evento:</strong> Cumpleaños 15 años</p>
+            <p><strong>Fecha:</strong> 10 de Enero, 2024</p>
+            <p><strong>Seña:</strong> $8,000</p>
+            <button class="btn" onclick="confirmarReserva()">Confirmar e Imprimir</button>
+        </div>
+
+        <!-- Panel Admin -->
+        <div id="admin" class="card" style="display:none;">
+            <h3>Panel de Administración - Reservas</h3>
+            <div class="calendar">
+                <div class="calendar-item future">
+                    <p><strong>Reserva Confirmada</strong></p>
+                    <p>Evento: Cumpleaños de María</p>
+                    <p>Fecha: 15 de Enero, 2024</p>
                 </div>
+                <div class="calendar-item future">
+                    <p><strong>Reserva Confirmada</strong></p>
+                    <p>Evento: Fiesta de 15</p>
+                    <p>Fecha: 30 de Enero, 2024</p>
+                </div>
+                <div class="calendar-item future">
+                    <p><strong>Reserva Confirmada</strong></p>
+                    <p>Evento: Bautismo</p>
+                    <p>Fecha: 15 de Febrero, 2024</p>
+                </div>
+                <!-- Más eventos aquí... -->
             </div>
         </div>
     </div>
 
-    <!-- Visual Empleado -->
-    <div id="empleado" class="card" style="display:none;">
-        <h3>Plantilla de Reserva - Empleado</h3>
-        <p><strong>Cliente:</strong> Juan Pérez</p>
-        <p><strong>Evento:</strong> Cumpleaños 15 años</p>
-        <p><strong>Fecha:</strong> 10 de Enero, 2024</p>
-        <p><strong>Seña:</strong> $8,000</p>
-        <button class="btn" onclick="confirmarReserva()">Confirmar e Imprimir</button>
-    </div>
-
-    <!-- Panel Admin -->
-    <div id="admin" class="card" style="display:none;">
-        <h3>Panel de Administración - Reservas</h3>
-        <div class="calendar">
-            <div class="calendar-item future">
-                <p><strong>Reserva Confirmada</strong></p>
-                <p>Evento: Cumpleaños de María</p>
-                <p>Fecha: 15 de Enero, 2024</p>
-            </div>
-            <div class="calendar-item future">
-                <p><strong>Reserva Confirmada</strong></p>
-                <p>Evento: Fiesta de 15</p>
-                <p>Fecha: 30 de Enero, 2024</p>
-            </div>
-            <div class="calendar-item future">
-                <p><strong>Reserva Confirmada</strong></p>
-                <p>Evento: Bautismo</p>
-                <p>Fecha: 15 de Febrero, 2024</p>
-            </div>
-            <!-- Más eventos aquí... -->
-        </div>
-    </div>
-</div>
-
-<script>
-    function showEmpleado() {
-        document.getElementById('empleado').style.display = 'block';
-        document.getElementById('admin').style.display = 'none';
-        document.getElementById('cliente').style.display = 'none';
-    }
-
-    function showAdmin() {
-        document.getElementById('empleado').style.display = 'none';
-        document.getElementById('admin').style.display = 'block';
-        document.getElementById('cliente').style.display = 'none';
-    }
-
-    function showCliente() {
-        document.getElementById('empleado').style.display = 'none';
-        document.getElementById('admin').style.display = 'none';
-        document.getElementById('cliente').style.display = 'block';
-    }
-
-    function confirmarReserva() {
-        alert("Reserva confirmada e imprimida!");
-    }
-
-    function createConfetti() {
-        for (let i = 0; i < 50; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            confetti.style.animationDelay = Math.random() * 3 + 's';
-            document.body.appendChild(confetti);
-            
-            setTimeout(() => confetti.remove(), 3000);
+    <script>
+        function showEmpleado() {
+            document.getElementById('empleado').style.display = 'block';
+            document.getElementById('admin').style.display = 'none';
+            document.getElementById('cliente').style.display = 'none';
         }
-    }
 
-    function consultarReserva() {
-        var codigo = document.getElementById('codigoReserva').value.toUpperCase();
-        var reservationDetails = document.getElementById('reservation-details');
-        
-        if (codigo === 'A0000') {
-            reservationDetails.style.display = 'block';
-            createConfetti();
-        } else {
-            reservationDetails.style.display = 'none';
-            alert("Código de reserva no encontrado. Por favor, intente con A0000");
+        function showAdmin() {
+            document.getElementById('empleado').style.display = 'none';
+            document.getElementById('admin').style.display = 'block';
+            document.getElementById('cliente').style.display = 'none';
         }
-    }
 
-    function updateCountdown() {
-        const eventDate = new Date('2024-12-25T00:00:00');
-        const now = new Date();
-        const difference = eventDate - now;
+        function showCliente() {
+            document.getElementById('empleado').style.display = 'none';
+            document.getElementById('admin').style.display = 'none';
+            document.getElementById('cliente').style.display = 'block';
+        }
 
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        function confirmarReserva() {
+            alert("Reserva confirmada e imprimida!");
+        }
 
-        document.getElementById('countdown').innerHTML = `
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        function consultarReserva() {
+            var codigo = document.getElementById('codigoReserva').value.toUpperCase();
+            var reservationDetails = document.getElementById('reservation-details');
+
+            if (codigo === 'A0000') {
+                reservationDetails.style.display = 'block';
+                createConfetti();
+            } else {
+                reservationDetails.style.display = 'none';
+                alert("Código de reserva no encontrado. Por favor, intente con A0000");
+            }
+        }
+
+        function updateCountdown() {
+            const eventDate = new Date('2024-12-25T00:00:00');
+            const now = new Date();
+            const difference = eventDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = `
             Próximo evento en: ${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos
         `;
-    }
+        }
 
-    // Initialize
-    window.onload = function() {
-        showCliente();
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-        
-        document.getElementById('codigoReserva').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                consultarReserva();
-            }
-        });
-    };
-</script>
+        // Initialize
+        window.onload = function () {
+            showCliente();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            document.getElementById('codigoReserva').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    consultarReserva();
+                }
+            });
+        };
+    </script>
 
 </body>
+
 </html>
