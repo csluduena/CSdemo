@@ -3,37 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capitan Salto</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Capitan Salto - Casa de Festejos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff6347;
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        .btn {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #e55347;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .card h3 {
+            color: #ff6347;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .calendar-item {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .calendar-item.past {
+            background-color: #ffcccb;
+        }
+
+        .calendar-item.future {
+            background-color: #b0e57c;
+        }
+
+        .calendar-item.cancelled {
+            background-color: #ffb3b3;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+
+        .client-details {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Capitan Salto - Consulta tu reserva</h1>
-    </header>
-    
-    <section class="cliente">
-        <h2>Consultar Reserva</h2>
-        <p>Ingresa el código de acceso proporcionado al realizar tu reserva:</p>
-        <input type="text" placeholder="Código de acceso" id="codigoReserva">
-        <button onclick="consultarReserva()">Consultar</button>
-        <div id="resultadoReserva" class="resultado">
-            <!-- Aquí se mostrarían los detalles de la reserva -->
-        </div>
-    </section>
-    
-    <footer>
-        <p>&copy; 2024 Capitan Salto. Todos los derechos reservados.</p>
-    </footer>
 
-    <script>
-        function consultarReserva() {
-            const codigo = document.getElementById('codigoReserva').value;
-            if (codigo) {
-                document.getElementById('resultadoReserva').innerHTML = `<p>Reserva encontrada: <strong>Código: ${codigo}</strong></p>`;
-            } else {
-                alert('Por favor ingresa un código de reserva.');
-            }
+<header>
+    <h1>Capitan Salto - Casa de Festejos</h1>
+</header>
+
+<div class="container">
+    <button class="btn" onclick="showEmpleado()">Visual Empleado</button>
+    <button class="btn" onclick="showAdmin()">Panel Administrador</button>
+    <button class="btn" onclick="showCliente()">Visual Cliente</button>
+    
+    <!-- Visual Empleado -->
+    <div id="empleado" class="card" style="display:none;">
+        <h3>Plantilla de Reserva - Empleado</h3>
+        <p><strong>Cliente:</strong> Juan Pérez</p>
+        <p><strong>Evento:</strong> Cumpleaños 15 años</p>
+        <p><strong>Fecha:</strong> 10 de Enero, 2024</p>
+        <p><strong>Seña:</strong> $8,000</p>
+        <button class="btn" onclick="confirmarReserva()">Confirmar e Imprimir</button>
+    </div>
+
+    <!-- Panel Admin -->
+    <div id="admin" class="card" style="display:none;">
+        <h3>Panel de Administración - Reservas</h3>
+        <div class="calendar">
+            <div class="calendar-item past">
+                <p><strong>Reserva Vencida</strong></p>
+                <p>Evento: Cumpleaños de Luis</p>
+                <p>Fecha: 5 de Diciembre, 2024</p>
+            </div>
+            <div class="calendar-item future">
+                <p><strong>Reserva para Mañana</strong></p>
+                <p>Evento: Fiesta Infantil</p>
+                <p>Fecha: 10 de Diciembre, 2024</p>
+            </div>
+            <div class="calendar-item cancelled">
+                <p><strong>Reserva Cancelada</strong></p>
+                <p>Evento: Casamiento</p>
+                <p>Fecha: 8 de Diciembre, 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visual Cliente -->
+    <div id="cliente" class="card" style="display:none;">
+        <h3>Consulta de Reserva - Cliente</h3>
+        <input type="text" id="codigoReserva" placeholder="Ingresa tu código de reserva">
+        <button class="btn" onclick="consultarReserva()">Consultar</button>
+
+        <div id="cliente-details" class="client-details" style="display:none;">
+            <p><strong>Cliente:</strong> Ana Gómez</p>
+            <p><strong>Evento:</strong> Cumpleaños 30 años</p>
+            <p><strong>Fecha del Evento:</strong> 25 de Diciembre, 2024</p>
+            <div class="payment">
+                <p><strong>Pago de Seña:</strong> $8,000 (3 de Diciembre, 2024)</p>
+                <p><strong>Saldo Pendiente:</strong> $30,000 (pago antes del 1 de Febrero, 2025)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showEmpleado() {
+        document.getElementById('empleado').style.display = 'block';
+        document.getElementById('admin').style.display = 'none';
+        document.getElementById('cliente').style.display = 'none';
+    }
+
+    function showAdmin() {
+        document.getElementById('empleado').style.display = 'none';
+        document.getElementById('admin').style.display = 'block';
+        document.getElementById('cliente').style.display = 'none';
+    }
+
+    function showCliente() {
+        document.getElementById('empleado').style.display = 'none';
+        document.getElementById('admin').style.display = 'none';
+        document.getElementById('cliente').style.display = 'block';
+    }
+
+    function confirmarReserva() {
+        alert("Reserva confirmada e imprimida!");
+    }
+
+    function consultarReserva() {
+        var codigo = document.getElementById('codigoReserva').value;
+        if (codigo) {
+            document.getElementById('cliente-details').style.display = 'block';
+        } else {
+            alert("Por favor, ingrese un código de reserva válido.");
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
